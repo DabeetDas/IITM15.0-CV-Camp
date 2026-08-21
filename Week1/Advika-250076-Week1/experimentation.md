@@ -1,14 +1,13 @@
 # Edge Detection Experimentation
 
-# Objective
-To test and compare convolution-based edge detection techniques.
+# What this code does
+For this task, I wrote a Python script to detect edges in an image using 2D convolutions. I decided to implement and compare two different mathematical operators: Sobel and Scharr.
 
 # Methods Tested
-1. Sobel Operator (Primary): Used a 3x3 kernel. It provided a good balance between edge emphasis and noise suppression because the center weights are slightly heavier, which creates a slight smoothing effect.
-2. Scharr Operator: I experimented with Scharr kernels (weights of 3 and 10 instead of 1 and 2). 
-   Result: Scharr picked up finer details and much higher gradient responses, but it also amplified background noise more than Sobel.
-3. Prewitt Operator: Swapped the kernel weights to uniform values (1s and -1s). 
-   Result: The edges were slightly blurrier compared to Sobel, proving that Sobel's heavier center weighting is superior for standard images.
+1. I used OpenCV to read the test image in grayscale. This makes the math easier since I only have to deal with one matrix of pixel intensities instead of three color channels.
+2. I defined 3 x 3 matrices for the X and Y directions. Sobel uses smaller weights (like 1 and 2), while Scharr uses larger weights (3 and 10) to create a stronger response.
+3. Used `scipy.signal.convolve2d` to pass the X and Y kernels over the image, which calculates the vertical and horizontal gradients.
+4. To get the final edge map, I combined the X and Y results using the magnitude formula: $G = \sqrt{G_x^2 + G_y^2}$.
 
 # Conclusion
-The Sobel operator is the most practical choice for basic edge detection on standard images due to its inherent noise-smoothing characteristics during the gradient calculation.
+The Sobel operator is the most practical choice for basic edge detection on standard images due to its better noise-smoothing characteristics .
