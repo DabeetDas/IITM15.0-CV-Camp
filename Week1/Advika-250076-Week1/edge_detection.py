@@ -66,3 +66,5 @@ def detect_edges(image_path):
 if __name__ == "__main__":
   
     detect_edges('sample_image.jpg')
+    
+
