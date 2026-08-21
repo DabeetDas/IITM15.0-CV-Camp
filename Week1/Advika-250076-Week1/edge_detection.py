@@ -40,5 +40,4 @@ def detect_edges(image_path):
     plt.show()
 
 if __name__ == "__main__":
-    # Run the function
     detect_edges('sample_image.jpg')
